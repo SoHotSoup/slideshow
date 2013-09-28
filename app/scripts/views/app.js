@@ -25,8 +25,27 @@ function (Backbone,
                 collection: new SlidesCollection(testCollection)
             });
 
-            App.Router = new Router();
+            App.router = new Router();
             Backbone.history.start();
+        },
+
+        events: {
+
+            'keyup': 'keyUp'
+
+        },
+
+        keyUp: function (e){
+
+            if(e.keyCode === 37 || e.keyCode === 39)
+            {
+                App.Vent.trigger('changeSlide', {
+
+                    direction: e.keyCode === 39 ? 'next' : 'prev'
+
+                });
+            }
+
         }
     });
 

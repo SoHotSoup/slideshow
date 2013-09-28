@@ -6,7 +6,7 @@ define(['backbone'], function (Backbone) {
         className: 'slide',
 
         render: function () {
-            console.log('u slideu sam' + this.model.get('title'));
+            
             this.$el.append(
 
                     '<h1>' + this.model.get('title') + '</h1>'
