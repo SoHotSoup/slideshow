@@ -26,14 +26,9 @@ require.config({
     }
 });
 
-require([
-    'backbone'
-], function (Backbone) {
-    Backbone.history.start();
-});
+require(['views/app'], function(AppView){
 
-require(['views/app'], function(App){
+    window.App = {};
+    new AppView();
 
-    new App();
-    console.log('tu sam')
 });
