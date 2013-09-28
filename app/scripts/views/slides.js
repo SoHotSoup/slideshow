@@ -9,6 +9,14 @@ define(['backbone', 'views/slide'], function (Backbone, SlideView) {
 
             this.renderAll();
 
+            App.Vent.on('init', this.hideAllButFirst, this);
+
+        },
+
+        hideAllButFirst: function () {
+
+            this.$el.children(':nth-child(n+2)').hide();
+
         },
 
         renderAll: function () {

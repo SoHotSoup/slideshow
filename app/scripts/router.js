@@ -5,12 +5,25 @@ define(['backbone'], function(Backbone){
 
 		routes: {
 
-			'': 'home'
+			'': 'home',
+			'slides/:id': 'showSlide'
 		},
 
 		home: function(){
 
-			alert('home');
+			App.Vent.trigger('init');
+		},
+
+		showSlide: function (slideIndex) {
+			
+			console.log(slideIndex);
+			App.Vent.trigger('changeSlide', {
+
+				slideIndex: slideIndex,
+				direction: 'next'
+
+			});
+
 		}
 
 	});

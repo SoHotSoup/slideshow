@@ -28,7 +28,11 @@ require.config({
 
 require(['views/app'], function(AppView){
 
-    window.App = {};
+    window.App = {
+
+        Vent: _.extend({}, Backbone.Events)
+
+    };
     new AppView();
 
 });
