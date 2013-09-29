@@ -1,11 +1,11 @@
 define(['backbone', 'models/slide'], function (Backbone, Slide) {
-	// slide collection
+    // slide collection
 
-	var Slides = Backbone.Collection.extend({
+    var Slides = Backbone.Collection.extend({
 
-		model: Slide
+        model: Slide
 
-	});
+    });
 
-	return Slides;
+    return Slides;
 });
