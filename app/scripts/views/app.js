@@ -14,15 +14,8 @@ function (Backbone,
 
         initialize: function (){
 
-            var testCollection = [
-
-                { title: 'My First Slide' },
-                { title: 'My Second Slide' }
-
-            ];
-
             new SlidesView({
-                collection: new SlidesCollection(testCollection)
+                collection: new SlidesCollection(window.slides)
             });
 
             App.router = new Router();
