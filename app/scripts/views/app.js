@@ -11,8 +11,7 @@ function (Backbone,
     var AppView = Backbone.View.extend({
 
         el: 'body',
-
-        initialize: function (){
+        initialize: function() {
 
             new SlidesView({
                 collection: new SlidesCollection(window.slides)
@@ -21,16 +20,15 @@ function (Backbone,
             App.router = new Router();
             Backbone.history.start();
         },
-
         events: {
 
-            'keyup': 'keyUp'
+            'keyup': 'keyUp',
+            'click': 'onClick'
 
         },
+        keyUp: function(e) {
 
-        keyUp: function (e){
-
-            if(e.keyCode === 37 || e.keyCode === 39)
+            if (e.keyCode === 37 || e.keyCode === 39)
             {
                 App.Vent.trigger('changeSlide', {
 
@@ -39,7 +37,11 @@ function (Backbone,
                 });
             }
 
+        },
+        onClick: function(e) {
+            App.Vent.trigger('changeSlide', { direction: 'next' });
         }
+
     });
 
 

@@ -4,7 +4,6 @@ define(['backbone'], function (Backbone) {
     var Slide = Backbone.View.extend({
 
         className: 'slide',
-
         render: function () {
 
             
@@ -14,31 +13,28 @@ define(['backbone'], function (Backbone) {
 
                 );
 
-            if( this.model.get('image') )
-            {
+            if ( this.model.get('image') ) {
                 this.renderImage();
-
             }
-            else if( this.model.get('bullets'))
-            {
+            else if ( this.model.get('bullets')){
                 this.renderBullets();
             }
-            else if( this.model.get('quote'))
-            {
+            else if ( this.model.get('quote')){
                 this.renderQuote();
+            }
+            else if ( this.model.get('code')){
+                this.renderCode();
             }
 
             return this;
 
         },
-
         renderImage: function () {
             this.$el
                 .addClass('image')
                 .append('<img src="'+ this.model.get('image') + '">')
         },
-
-        renderBullets: function () {
+        renderBullets: function() {
             this.$el
                 .addClass('bullets')
                 .append([
@@ -48,8 +44,7 @@ define(['backbone'], function (Backbone) {
                     '</ul>'
                     ].join(''));
         },
-
-        renderQuote: function () {
+        renderQuote: function() {
             this.$el
                 .addClass('quote')
                 .append([
@@ -64,6 +59,25 @@ define(['backbone'], function (Backbone) {
                         '</figcaption>',
                     '</figure>'
                     ].join(''));
+        },
+        renderCode: function() {
+            var slide = this,
+                code = this.model.get('code');
+
+            $.get(code, function(snippet) {
+                slide.$el
+                    .addClass('code')
+                    .append([
+                        '<code>',
+                        '<pre class="prettyprint linenum">',
+                        _.escape(snippet),
+                        '</pre>',
+                        '</code>'
+                    ].join(''));
+
+                prettyPrint();
+            });
+            
         }
 
     });

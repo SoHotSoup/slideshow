@@ -22,11 +22,12 @@ require.config({
         jquery: '../bower_components/jquery/jquery',
         backbone: '../bower_components/backbone-amd/backbone',
         underscore: '../bower_components/underscore-amd/underscore',
-        bootstrap: 'vendor/bootstrap'
+        bootstrap: 'vendor/bootstrap',
+        prettify: '../bower_components/google-code-prettify/src/prettify'
     }
 });
 
-require(['views/app'], function(AppView){
+require(['views/app', 'prettify'], function(AppView){
 
     window.App = {
 
